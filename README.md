@@ -11,7 +11,7 @@ git clone https://github.com/JanardanBhetwal/DBMS_Registration_Assignment.git
 ### For MacOS/Linux
 
 ```bash
-cd DB
+cd DBMS_Registration_Assignment
 cd backend
 python3 -m venv myenv
 source myenv/bin/activate
