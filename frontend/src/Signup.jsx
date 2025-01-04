@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const getCookie = (name) => {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+};
+
 const SignupForm = () => {
   const navigate = useNavigate();
 
@@ -16,7 +22,7 @@ const SignupForm = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const csrfToken = getCookie("csrftoken"); // Retrieve CSRF token from cookies
+  const csrfToken = getCookie("csrftoken");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +34,12 @@ const SignupForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic validation
+    if (!formData.email || !formData.password) {
+      setError("Email and password are required.");
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -43,20 +55,18 @@ const SignupForm = () => {
 
       if (response.status === 201) {
         setSuccess(true);
-        setError(null); // Clear previous errors
+        setError(null);
         setTimeout(() => {
-          navigate("/login"); // Redirect to login page after 1 second
+          navigate("/login");
         }, 1000);
       }
     } catch (err) {
       if (err.response && typeof err.response.data === "object") {
-        // Process structured error messages from the backend
         const errorMessages = Object.values(err.response.data)
-          .flat() // Flatten any nested arrays
-          .join(", "); // Combine messages into a single string
+          .flat()
+          .join(", ");
         setError(errorMessages);
       } else {
-        // Handle unexpected errors
         setError("Something went wrong.");
       }
       setSuccess(false);
@@ -64,41 +74,111 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-      />
-      <input
-        type="email"
-        name="email"
-        value={formData.email}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-      <input
-        type="text"
-        name="phone_number"
-        value={formData.phone_number}
-        onChange={handleChange}
-      />
-      <input
-        type="date"
-        name="dob"
-        value={formData.dob}
-        onChange={handleChange}
-      />
-      <button type="submit">Sign Up</button>
-      {error && <div>{error}</div>}
-      {success && <div>Signup Successful!</div>}
-    </form>
+    <div className="min-h-screen flex justify-center items-center bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 className="text-2xl font-semibold text-center mb-4">Sign Up</h2>
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Full Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="phone_number"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Phone Number
+            </label>
+            <input
+              type="text"
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              placeholder="Enter your phone number"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="dob"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Date of Birth
+            </label>
+            <input
+              type="date"
+              name="dob"
+              value={formData.dob}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
+          >
+            Sign Up
+          </button>
+
+          {error && <div className="mt-4 text-red-500 text-sm">{error}</div>}
+          {success && (
+            <div className="mt-4 text-green-500 text-sm">
+              Signup Successful!
+            </div>
+          )}
+        </form>
+      </div>
+    </div>
   );
 };
 
