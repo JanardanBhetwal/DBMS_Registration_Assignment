@@ -5,7 +5,7 @@ These instructions assume you have Git and Node.js installed on your system.
 1. **Clone the repository:**
 
 ```bash
-git clone [https://github.com/your-repository-url.git](https://github.com/your-repository-url.git)
+git clone https://github.com/JanardanBhetwal/DBMS_Registration_Assignment.git
 ```
 
 ### For MacOS/Linux
