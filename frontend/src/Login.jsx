@@ -1,112 +1,3 @@
-// import React, { useState } from "react";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
-
-// const LoginForm = () => {
-//   const [formData, setFormData] = useState({
-//     email: "",
-//     password: "",
-//   });
-//   const [error, setError] = useState(null);
-//   const [success, setSuccess] = useState(false);
-//   const navigate = useNavigate();
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value,
-//     });
-//   };
-
-//   const handleLogin = async (e) => {
-//     e.preventDefault();
-
-//     try {
-//       // Simulating the login without real authentication (simplified)
-//       const response = await axios.post("http://127.0.0.1:8000/api/login/", {
-//         email: formData.email,
-//         password: formData.password,
-//       });
-
-//       if (response.status === 200) {
-//         // Simulate successful login
-//         setSuccess(true);
-//         setError(null); // Clear any previous error
-//         // Redirect to user profile or dashboard (or any other route)
-//         setTimeout(() => {
-//           navigate("/me"); // Adjust this route as needed
-//         }, 100);
-//       }
-//     } catch (err) {
-//       setError("Invalid credentials.");
-//       setSuccess(false);
-//     }
-//   };
-
-//   return (
-//     <div className="min-h-screen flex justify-center items-center bg-purple-900">
-//       <div className="bg-purple-800 p-8 rounded-xl shadow-lg max-w-sm w-full">
-//         <h2 className="text-3xl text-white font-bold text-center mb-6">
-//           Login
-//         </h2>
-
-//         {error && (
-//           <div className="bg-red-500 text-white p-3 rounded-lg mb-4">
-//             {error}
-//           </div>
-//         )}
-//         {success && (
-//           <div className="bg-green-500 text-white p-3 rounded-lg mb-4">
-//             Login successful!
-//           </div>
-//         )}
-
-//         <form onSubmit={handleLogin} className="space-y-4">
-//           <div>
-//             <label htmlFor="email" className="block text-white">
-//               Email
-//             </label>
-//             <input
-//               type="email"
-//               id="email"
-//               name="email"
-//               value={formData.email}
-//               onChange={handleChange}
-//               required
-//               className="w-full p-3 rounded-lg bg-purple-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
-//             />
-//           </div>
-
-//           <div>
-//             <label htmlFor="password" className="block text-white">
-//               Password
-//             </label>
-//             <input
-//               type="password"
-//               id="password"
-//               name="password"
-//               value={formData.password}
-//               onChange={handleChange}
-//               required
-//               className="w-full p-3 rounded-lg bg-purple-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
-//             />
-//           </div>
-
-//           <button
-//             type="submit"
-//             className="w-full py-3 rounded-lg bg-purple-600 text-white font-bold hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
-//           >
-//             Login
-//           </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default LoginForm;
-
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -161,8 +52,8 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-purple-900">
-      <div className="bg-purple-800 p-8 rounded-xl shadow-lg max-w-sm w-full">
+    <div className="min-h-screen flex justify-center items-center bg-slate-400">
+      <div className="bg-slate-800 p-8 rounded-xl shadow-lg max-w-sm w-full">
         <h2 className="text-3xl text-white font-bold text-center mb-6">
           Login
         </h2>
@@ -185,7 +76,7 @@ const LoginForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg bg-purple-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 rounded-lg  text-black focus:outline-none focus:ring-2 focus:ring-gray-600"
             />
           </div>
 
@@ -200,18 +91,26 @@ const LoginForm = () => {
               value={formData.password}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg bg-purple-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-600"
+              className="w-full p-3 rounded-lg  text-black focus:outline-none focus:ring-2 focus:ring-gray-600"
             />
           </div>
 
           <button
             type="submit"
             disabled={loading} // Disable the button while loading
-            className="w-full py-3 rounded-lg bg-purple-600 text-white font-bold hover:bg-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full py-3 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-gray-600"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+        <div>
+          <p className="text-white text-center mt-4">
+            Don't have an account?{" "}
+            <a href="/signup" className="text-purple-300 hover:underline">
+              Sign up
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

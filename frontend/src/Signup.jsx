@@ -74,15 +74,15 @@ const SignupForm = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-96">
+    <div className="min-h-screen flex justify-center items-center bg-slate-400 text-white">
+      <div className="bg-slate-800 p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-semibold text-center mb-4">Sign Up</h2>
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Full Name
             </label>
@@ -91,7 +91,7 @@ const SignupForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full border text-black border-gray-300 rounded-md"
               placeholder="Enter your full name"
             />
           </div>
@@ -99,7 +99,7 @@ const SignupForm = () => {
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Email
             </label>
@@ -108,7 +108,7 @@ const SignupForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full border text-black border-gray-300 rounded-md"
               placeholder="Enter your email"
             />
           </div>
@@ -116,7 +116,7 @@ const SignupForm = () => {
           <div className="mb-4">
             <label
               htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Password
             </label>
@@ -125,7 +125,7 @@ const SignupForm = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full border text-black border-gray-300 rounded-md"
               placeholder="Enter your password"
             />
           </div>
@@ -133,7 +133,7 @@ const SignupForm = () => {
           <div className="mb-4">
             <label
               htmlFor="phone_number"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Phone Number
             </label>
@@ -142,7 +142,7 @@ const SignupForm = () => {
               name="phone_number"
               value={formData.phone_number}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full border text-black border-gray-300 rounded-md"
               placeholder="Enter your phone number"
             />
           </div>
@@ -150,7 +150,7 @@ const SignupForm = () => {
           <div className="mb-4">
             <label
               htmlFor="dob"
-              className="block text-sm font-medium text-gray-700"
+              className="block text-sm font-medium text-white"
             >
               Date of Birth
             </label>
@@ -159,7 +159,7 @@ const SignupForm = () => {
               name="dob"
               value={formData.dob}
               onChange={handleChange}
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+              className="mt-1 p-2 w-full border text-black border-gray-300 rounded-md"
             />
           </div>
 
@@ -177,6 +177,14 @@ const SignupForm = () => {
             </div>
           )}
         </form>
+        <div>
+          <p className="mt-4 text-center">
+            Already have an account?{" "}
+            <a href="/login" className="text-blue-500 hover:underline">
+              Login
+            </a>
+          </p>
+        </div>
       </div>
     </div>
   );

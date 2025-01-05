@@ -47,8 +47,8 @@ const UserProfile = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-purple-900">
-      <div className="bg-purple-800 p-8 rounded-xl shadow-lg max-w-lg w-full">
+    <div className="min-h-screen flex justify-center items-center bg-slate-400">
+      <div className="bg-slate-800 p-8 rounded-xl shadow-lg max-w-lg w-full">
         <h2 className="text-3xl text-white font-bold text-center mb-6">
           User Profile
         </h2>
@@ -71,9 +71,9 @@ const UserProfile = () => {
 
             {/* Displaying admin label if the user is a superuser */}
             {userData.is_superuser && (
-              <div>
+              <div className="w-full">
                 <button
-                  className="bg-red-500 text-white px-4 py-2 rounded-lg"
+                  className="bg-blue-500 text-white px-4 py-2 m-auto rounded-lg"
                   onClick={() => navigate("/dashboard")}
                 >
                   Dashboard
