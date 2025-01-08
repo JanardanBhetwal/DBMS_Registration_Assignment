@@ -89,8 +89,8 @@ const UpdateUser = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-purple-900">
-      <div className="bg-purple-800 p-8 rounded-xl shadow-lg max-w-lg w-full">
+    <div className="min-h-screen flex justify-center items-center bg-slate-400">
+      <div className="bg-slate-800 p-8 rounded-xl shadow-lg max-w-lg w-full">
         <h2 className="text-3xl text-white font-bold text-center mb-6">
           Update User
         </h2>
