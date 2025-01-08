@@ -1,6 +1,11 @@
 ## How to Run the Project
 
-These instructions assume you have Git and Node.js installed on your system.
+Before running this project, ensure that you have the following installed:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/)
+- [MySQL](https://www.mysql.com/)
+- [Python 3](https://www.python.org/)
 
 1. **Clone the repository:**
 
@@ -28,7 +33,7 @@ myenv\Scripts\activate
 
 2. **Database**
 
-Open settings.py in Registration/backend/backend.
+- Open settings.py in Registration/backend/backend.
 
 ```bash
 DATABASES = {
@@ -43,9 +48,9 @@ DATABASES = {
 }
 ```
 
-Replace root with your mysql username and password with mysql password.
+- Replace root with your mysql username and password with mysql password.
 
-Open a query tab in mysql, copy the content of db.sql and paste it then execute.
+- Open a query tab in mysql, copy the content of db.sql and paste it then execute.
 
 3. **Backend**
 
@@ -57,9 +62,9 @@ python manage.py runserver
 4. **Frontend**
    (In a new terminal session) Navigate to the frontend directory and install dependencies:
 
-````bash
+```bash
 cd ..
 cd frontend
 npm install
-npm run dev```
-````
+npm run dev
+```
